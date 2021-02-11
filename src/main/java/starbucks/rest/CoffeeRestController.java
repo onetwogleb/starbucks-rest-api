@@ -25,6 +25,10 @@ public class CoffeeRestController {
 
         Coffee coffee = coffeeService.getOneCoffee(id);
 
+        if(coffee == null){
+            throw new CoffeeNotFoundException("No coffee with this ID: " + id);
+        }
+
         return coffee;
     }
 
@@ -46,6 +50,12 @@ public class CoffeeRestController {
 
     @DeleteMapping("/coffee/{id}")
     public String deleteCoffee(@PathVariable int id){
+
+        Coffee coffee = coffeeService.getOneCoffee(id);
+
+        if(coffee == null){
+            throw new CoffeeNotFoundException("No coffee with this ID: " + id);
+        }
 
         coffeeService.deleteCoffee(id);
 

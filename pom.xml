@@ -10,7 +10,6 @@
   <packaging>war</packaging>
 
   <name>starbucks-rest-api Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
   <url>https://github.com/onetwogleb/starbucks-rest-api</url>
 
   <properties>
