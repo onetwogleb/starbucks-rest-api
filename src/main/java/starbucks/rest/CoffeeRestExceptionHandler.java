@@ -4,29 +4,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import java.time.LocalDateTime;
 
 @ControllerAdvice
-public class CoffeeRestExceptionHandler {
+public class CoffeeRestExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler
-    public ResponseEntity<CoffeeErrorResponse> handleException (CoffeeNotFoundException exception){
+    @ExceptionHandler({ CoffeeNotFoundException.class })
+    public ResponseEntity<CoffeeErrorResponse> handleException(CoffeeNotFoundException exception){
 
-        CoffeeErrorResponse error = new CoffeeErrorResponse(HttpStatus.NOT_FOUND.value(),
-                exception.getMessage(), System.currentTimeMillis());
+        CoffeeErrorResponse error = new CoffeeErrorResponse(HttpStatus.NOT_FOUND, "404",
+                exception.getMessage(), LocalDateTime.now());
 
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
-
-    @ExceptionHandler
-    public ResponseEntity<CoffeeErrorResponse> handleException (Exception exception){
-
-        CoffeeErrorResponse error = new CoffeeErrorResponse(HttpStatus.BAD_REQUEST.value(),
-                exception.getMessage(), System.currentTimeMillis());
-
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-    }
-
-
-
-
 }

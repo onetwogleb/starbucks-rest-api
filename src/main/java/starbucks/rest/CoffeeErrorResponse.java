@@ -1,26 +1,43 @@
 package starbucks.rest;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.http.HttpStatus;
+
+import java.time.LocalDateTime;
+
 public class CoffeeErrorResponse {
 
-    private int status;
+    private HttpStatus status;
+    private String code;
     private String message;
-    private long timeStamp;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime timeStamp;
 
     public CoffeeErrorResponse() {
     }
 
-    public CoffeeErrorResponse(int status, String message, long timeStamp) {
+    public CoffeeErrorResponse(HttpStatus status, String code, String message, LocalDateTime timeStamp) {
         this.status = status;
+        this.code = code;
         this.message = message;
         this.timeStamp = timeStamp;
     }
 
-    public int getStatus() {
+    public HttpStatus getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(HttpStatus status) {
         this.status = status;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getMessage() {
@@ -31,13 +48,11 @@ public class CoffeeErrorResponse {
         this.message = message;
     }
 
-    public long getTimeStamp() {
+    public LocalDateTime getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(long timeStamp) {
+    public void setTimeStamp(LocalDateTime timeStamp) {
         this.timeStamp = timeStamp;
     }
-
-
 }
