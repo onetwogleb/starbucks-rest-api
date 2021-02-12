@@ -42,7 +42,7 @@ There are 3 types of roles:
     "description": "Our dark, rich espresso balanced with steamed milk and a light layer of foam. A perfect milk-forward warm-up."
 }
 ```
-- ![POST](https://via.placeholder.com/15/158/000000?text=+) **POST** `/api/coffee/`
+- ![POST](https://via.placeholder.com/15/158/000000?text=+) **POST** `/api/coffee`
 ```json
 {
     "name": "Espresso Con Panna",
