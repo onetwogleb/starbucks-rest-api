@@ -41,7 +41,7 @@ public class CoffeeRestController {
     }
 
     @PutMapping("/coffee")
-    public Coffee updatePlayer(@RequestBody Coffee coffee){
+    public Coffee updateCoffee(@RequestBody Coffee coffee){
 
         coffeeService.updateCoffee(coffee);
 
